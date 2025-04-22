@@ -1,1 +1,1 @@
-# Calificaciones-y-estad-sticas
+# Calificaciones-y-estadisticas
