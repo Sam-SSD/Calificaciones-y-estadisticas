@@ -44,11 +44,11 @@ def verificar_calificacion(calificaciones, calificacion):
 #hacer un menu de opciones
 
 def menu():
-    print("\n1. Validar calificación")
+    print("\n1. Validar calificación individual")
     print("2. Ingresar calificaciones")
-    print("3. Calcular promedio")
+    print("3. Calcular promedio de calificaciones")
     print("4. Contar calificaciones mayores")
-    print("5. Verificar calificación")
+    print("5. Verificar calificación en lista")
     print("6. Salir")
     opcion = input("Seleccione una opción: ")
     return opcion
