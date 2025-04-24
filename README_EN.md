@@ -1,5 +1,4 @@
-
-![grade_management_banner](https://github.com/user-attachments/assets/c8f3e51e-288e-4556-8aff-53e6285b231f)
+![grade_management_system](https://github.com/user-attachments/assets/ed9b3ea0-8f49-4d76-85a3-c729db431a72)
 
 # 📊 Grade Management System
 
