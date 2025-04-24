@@ -1,5 +1,4 @@
-
-![grade_management_banner](https://github.com/user-attachments/assets/c8f3e51e-288e-4556-8aff-53e6285b231f)
+![grade_management_system](https://github.com/user-attachments/assets/a615d451-7741-4b1a-ad5f-3b534fba951c)
 
 # 📊 Sistema de Gestión de Calificaciones
 
