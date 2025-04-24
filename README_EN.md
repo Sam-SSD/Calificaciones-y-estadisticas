@@ -76,13 +76,13 @@ The code is built in a modular way to facilitate maintenance and scalability:
 2. Clone the repository from GitHub:
 
    ```bash
-   git clone https://github.com/Sam-SSD/Grade-management-system.git
+   git clone https://github.com/Sam-SSD/Grade-Management-System.git
    ```
 
 3. Navigate to the project directory:
 
    ```bash
-   cd Grade-management-system
+   cd Grade-Management-System
    ```
 
 4. Run the main file:

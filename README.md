@@ -79,13 +79,13 @@ El código está construido de manera modular para favorecer su mantenimiento y 
 2. Clona este repositorio desde GitHub:
 
    ```bash
-   git clone https://github.com/Sam-SSD/Grade-management-system.git
+   git clone https://github.com/Sam-SSD/Grade-Management-System.git
    ```
 
 3. Navega al directorio del proyecto:
 
    ```bash
-   cd Grade-management-system
+   cd Grade-Management-System
    ```
 
 4. Ejecuta el archivo principal:
