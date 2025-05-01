@@ -41,11 +41,12 @@ def verificar_calificacion(calificaciones, calificacion):
     for c in calificaciones:
         if c == calificacion:
             contador += 1
-            print(f"La calificación {calificacion} se encuentra en la lista.")
-            break
+    if contador > 0:
+        print(f"La calificación {calificacion} se encuentra {contador} vez/veces en la lista.")
     else:
         print(f"La calificación {calificacion} no se encuentra en la lista.")
     return contador
+
 
 
 # Función para mostrar el menú y obtener la opción del usuario
@@ -116,7 +117,6 @@ while True:
                 try:
                     calificacion = float(input("Ingrese la calificación a verificar: "))
                     contador = verificar_calificacion(lista_calificaciones, calificacion)
-                    print(f"La calificación {calificacion} aparece {contador} veces en la lista.")
                     break
                 except ValueError:
                     print("Entrada inválida. Por favor, ingrese un número válido.")
