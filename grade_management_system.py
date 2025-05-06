@@ -14,6 +14,7 @@ def ingresar_calificaciones():
         except ValueError:
             print("Entrada no válida. Use solo números separados por comas.")
 
+
 def validar_calificacion(mensaje):
     while True:
         try:
@@ -32,8 +33,8 @@ def calcular_promedio(calificaciones):
     return sum(calificaciones) / len(calificaciones) if calificaciones else 0
 
 
-def contar_mayores(calificaciones, valor):
-    return sum(1 for c in calificaciones if c > valor)
+def obtener_mayores(calificaciones, valor):
+    return [c for c in calificaciones if c > valor]
 
 
 def verificar_calificacion(calificaciones, calificacion):
@@ -86,8 +87,11 @@ while True:
                 try:
                     valor = float(input("Ingrese el valor de comparación (0-100): "))
                     if 0 <= valor <= 100:
-                        conteo = contar_mayores(lista_calificaciones, valor)
-                        print(f"{conteo} calificación(es) mayor(es) a {valor}.")
+                        mayores = obtener_mayores(lista_calificaciones, valor)
+                        cantidad = len(mayores)
+                        print(f"\nSe encontraron {cantidad} calificación(es) mayor(es) a {valor}.")
+                        if cantidad > 0:
+                            print(f"Calificaciones mayores: {mayores}")
                     else:
                         print("El valor debe estar entre 0 y 100.")
                 except ValueError:
