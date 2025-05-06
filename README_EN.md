@@ -1,71 +1,75 @@
-![grade_management_system](https://github.com/user-attachments/assets/ed9b3ea0-8f49-4d76-85a3-c729db431a72)
+![grade_management_system](https://github.com/user-attachments/assets/a615d451-7741-4b1a-ad5f-3b534fba951c)
 
 # 📊 Grade Management System
 
+### 📘 Versión en español  
+[Haz clic aquí para ver el README en español](./README.md)
+
 ## 📌 Project Description
 
-This project is part of **Module 1 – Week 2 of the training program**, and its goal is to develop an interactive Python system to manage student grades and analyze performance statistics in a simple and functional way.
+This exercise is part of **Module 1 – Week 2 of the training program**, and its goal is to build an interactive Python system that helps manage student grades and analyze performance statistics in a simple and functional way.
 
 ---
 
 ## 🎯 Features
 
-- Validate an individual grade (from 0 to 100) and determine if the student passes (≥ 60).
+- Validate a single grade (from 0 to 100) and determine if it passes (≥ 60).
 - Input a list of valid grades separated by commas.
 - Calculate the average of the entered grades.
-- Count how many grades are greater than a specific value.
-- Check if a specific grade exists in the list and how many times it appears.
+- Count how many grades are higher than a specific value **and display them**.
+- Check whether a specific grade is in the list and how many times it appears.
+- **Delete all entered grades.**
 
 ---
 
-## 🧠 Logic Implemented
+## 🧠 Implemented Logic
 
-- Conditional structures (`if`, `if-else`, `if-elif-else`) are used to validate and evaluate user input.
-- `for` and `while` loops are used to navigate lists, control the menu, validate inputs, and count values.
-- `break` and `continue` are used to optimize flow control.
-- Each functionality is encapsulated in reusable functions to keep the code clean and organized.
+- Uses the `match-case` structure (available since Python 3.10) to organize the main menu flow clearly.
+- `while` loops are used to validate user input and control repeated entries.
+- List comprehensions are applied to efficiently filter and analyze grade data.
+- Each functionality is divided into clean, reusable, and well-documented functions.
+- The system responds interactively with clear user feedback.
 
 ---
 
 ## ✅ Validations Performed
 
-- Validation of correct range for each grade (0-100).
-- Handling of invalid inputs using `try-except`.
-- Filtering out invalid entries from lists before processing.
-- Considered cases:
-  1. Non-numeric inputs
-  2. Grades out of range
-  3. Empty lists
-  4. Detection of duplicates
-  5. Verification of a specific grade in the list
+- Range checking to ensure each grade is between 0 and 100.
+- Error handling using `try-except` for invalid entries.
+- Filtering out invalid data before processing lists.
+- Considered scenarios:
+  1. Non-numeric input
+  2. Out-of-range grades
+  3. Empty grade lists
+  4. Checking for the presence of a specific grade
 
 ---
 
 ## 📁 Code Structure
 
-- Code is divided into functions for: individual validation, average calculation, counting, and verification.
-- A main menu that directs to each feature.
-- Clear comments explaining each section of the code.
+- Functions are used for: individual validation, average calculation, retrieving grades above a value, searching, input, and list clearing.
+- The main menu is implemented using `match-case` for clear and efficient navigation.
+- Explanatory comments are provided in each section of the code.
 
 ---
 
 ## 🧩 Technical Justification
 
-The code is built in a modular way to facilitate maintenance and scalability:
+The code is built in a modular way to support future scalability and maintenance:
 
-- `float()` is used to support decimal grades.
-- Flow control structures enable smooth navigation.
-- Robust data validation and user feedback were prioritized.
-- Menu organization and functional separation allow easy extension of features.
+- `float()` is used to allow decimal values in grades.
+- Strong validation logic and clear user interaction are prioritized.
+- Modern structures like `match-case` improve the menu’s readability.
+- The function-based design allows for easy extension with new features.
 
 ---
 
 ## 🚀 Future Improvements
 
-- Export/import grade lists to/from external files (CSV, JSON).
-- Add features to edit or delete grades.
-- Implement a graphical interface using Tkinter or PyQt.
-- Include statistical graphs using `matplotlib`.
+- Export and import grade lists from external files (CSV, JSON).
+- Add functionality to modify or delete specific grades.
+- Implement a graphical user interface with Tkinter or PyQt.
+- Include performance statistics charts using `matplotlib`.
 
 ---
 
