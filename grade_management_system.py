@@ -1,55 +1,36 @@
 # Sistema de validación de calificaciones
 
-# Función para validar que la calificación esté entre 0 y 100 y si es mayor a 60 aprueba
 def validar_calificacion(mensaje):
     while True:
         try:
             calificacion = float(input(mensaje))
             if 0 <= calificacion <= 100:
-                if calificacion >= 60:
-                    print(f"La calificación {calificacion} es válida y aprueba.")
-                else:
-                    print(f"La calificación {calificacion} es válida pero no aprueba.")
+                estado = "aprueba" if calificacion >= 60 else "no aprueba"
+                print(f"La calificación {calificacion} es válida y {estado}.")
                 return calificacion
             else:
-                print("La calificación debe estar entre 0 y 100. Por favor, intente nuevamente.")
+                print("La calificación debe estar entre 0 y 100.")
         except ValueError:
-            print("Entrada inválida. Por favor, ingrese un número válido.")
+            print("Entrada no válida. Ingrese un número entre 0 y 100.")
 
 
-# Función para calcular el promedio de una lista de calificaciones
 def calcular_promedio(calificaciones):
-    if len(calificaciones) == 0:
-        return 0
-    suma = sum(calificaciones)
-    promedio = suma / len(calificaciones)
-    return promedio
+    return sum(calificaciones) / len(calificaciones) if calificaciones else 0
 
 
-# Función para contar cuántas calificaciones son mayores que un valor específico
 def contar_mayores(calificaciones, valor):
-    contador = 0
-    for calificacion in calificaciones:
-        if calificacion > valor:
-            contador += 1
-    return contador
+    return sum(1 for c in calificaciones if c > valor)
 
 
-# Función para verificar si una calificación está en la lista de calificaciones
 def verificar_calificacion(calificaciones, calificacion):
-    contador = 0
-    for c in calificaciones:
-        if c == calificacion:
-            contador += 1
-    if contador > 0:
-        print(f"La calificación {calificacion} se encuentra {contador} vez/veces en la lista.")
+    veces = calificaciones.count(calificacion)
+    if veces > 0:
+        print(f"La calificación {calificacion} se encuentra {veces} vez/veces en la lista.")
     else:
         print(f"La calificación {calificacion} no se encuentra en la lista.")
-    return contador
+    return veces
 
 
-
-# Función para mostrar el menú y obtener la opción del usuario
 def menu():
     print("\n-------------------------------------------------------")
     print("1. Validar calificación individual")
@@ -59,72 +40,73 @@ def menu():
     print("5. Verificar calificación en lista")
     print("6. Salir")
     print("-------------------------------------------------------")
-    opcion = input("Seleccione una opción: ")
-    return opcion
+    return input("Seleccione una opción: ").strip()
+
+
+def ingresar_calificaciones():
+    while True:
+        entrada = input("Ingrese calificaciones separadas por comas (0-100): ")
+        try:
+            calificaciones = [float(x.strip()) for x in entrada.split(",")]
+            calificaciones_validas = [c for c in calificaciones if 0 <= c <= 100]
+            if not calificaciones_validas:
+                print("No se ingresaron calificaciones válidas.")
+            else:
+                print(f"Calificaciones registradas: {calificaciones_validas}")
+                return calificaciones_validas
+        except ValueError:
+            print("Entrada no válida. Use solo números separados por comas.")
 
 
 # Programa principal
-print("----------Bienvenido al sistema de gestión de calificaciones----------")
+print("---------- Bienvenido al sistema de gestión de calificaciones ----------")
 lista_calificaciones = []
+
 while True:
     opcion = menu()
-    if opcion == "1":  # Validar una calificación individual,
-        calificacion = validar_calificacion("Ingrese una calificación numérica (0-100) Aprueba con 60: ")
 
-    elif opcion == "2":  # Ingresar calificaciones (separadas por comas) (0-100)
-        while True:
-            try:
-                lista_calificaciones = input(
-                    "Ingrese las calificaciones separadas por comas (0-100) (ejemplo: 70,80,90): ")
-                lista_calificaciones = [float(x) for x in lista_calificaciones.split(",")]
-                lista_calificaciones = [x for x in lista_calificaciones if 0 <= x <= 100]
-                if len(lista_calificaciones) == 0:
-                    print("No se han ingresado calificaciones válidas. Por favor, intente nuevamente.")
-                else:
-                    print(f"Calificaciones ingresadas: {lista_calificaciones}")
-                    break
-            except ValueError:
-                print("Entrada inválida. Por favor, ingrese números válidos separados por comas.")
+    if opcion == "1":
+        validar_calificacion("Ingrese una calificación (0-100): ")
 
-    elif opcion == "3":  # Calcular promedio de calificaciones
-        if len(lista_calificaciones) == 0:
-            print("No se han ingresado calificaciones. Por favor, primero ingrese calificaciones.")
+    elif opcion == "2":
+        lista_calificaciones = ingresar_calificaciones()
+
+    elif opcion == "3":
+        if not lista_calificaciones:
+            print("Primero debe ingresar calificaciones.")
         else:
             promedio = calcular_promedio(lista_calificaciones)
-            print(f"El promedio de las calificaciones es: {promedio:.2f}")
+            print(f"Promedio de calificaciones: {promedio:.2f}")
 
-    elif opcion == "4":  # Contar calificaciones mayores que un valor
-        if len(lista_calificaciones) == 0:
-            print("No se han ingresado calificaciones. Por favor, primero ingrese calificaciones.")
+    elif opcion == "4":
+        if not lista_calificaciones:
+            print("Primero debe ingresar calificaciones.")
         else:
-            while True:
-                try:
-                    valor = float(input("Ingrese un valor para contar cuántas calificaciones son mayores (0-100): "))
-                    if valor < 0 or valor > 100:
-                        print("El valor debe estar entre 0 y 100.")
-                    else:
-                        contador = contar_mayores(lista_calificaciones, valor)
-                        print(f"Hay {contador} calificaciones mayores a {valor}.")
-                        break
-                except ValueError:
-                    print("Entrada inválida. Por favor, ingrese un número válido.")
+            try:
+                valor = float(input("Ingrese el valor de comparación (0-100): "))
+                if 0 <= valor <= 100:
+                    conteo = contar_mayores(lista_calificaciones, valor)
+                    print(f"{conteo} calificación(es) mayor(es) a {valor}.")
+                else:
+                    print("El valor debe estar entre 0 y 100.")
+            except ValueError:
+                print("Entrada no válida. Ingrese un número válido.")
 
-    elif opcion == "5":  # Verificar si una calificación está en la lista de calificaciones
-        if len(lista_calificaciones) == 0:
-            print("No se han ingresado calificaciones. Por favor, primero ingrese calificaciones.")
+    elif opcion == "5":
+        if not lista_calificaciones:
+            print("Primero debe ingresar calificaciones.")
         else:
-            while True:
-                try:
-                    calificacion = float(input("Ingrese la calificación a verificar: "))
-                    contador = verificar_calificacion(lista_calificaciones, calificacion)
-                    break
-                except ValueError:
-                    print("Entrada inválida. Por favor, ingrese un número válido.")
+            try:
+                calificacion = float(input("Ingrese la calificación a buscar: "))
+                verificar_calificacion(lista_calificaciones, calificacion)
+            except ValueError:
+                print("Entrada no válida. Ingrese un número válido.")
 
-    elif opcion == "6":  # Salir del programa
-        print("Saliendo del programa...")
+    elif opcion == "6":
+        print("Saliendo del programa. Gracias por usar el sistema.")
         break
-    else:
-        print("Opción inválida. Por favor, seleccione una opción válida.")
 
-print("--------------------------------------------------------------------")
+    else:
+        print("Opción inválida. Por favor, seleccione una opción del 1 al 6.")
+
+print("-----------------------------------------------------------------------")
